@@ -90,3 +90,26 @@ else
     echo "$NUM1 is less than $NUM2"
 fi
 ```
+
+## File Conditions
+
+- `-d` file - return true if the file is a directory
+- `-e` file - return true if the file exists
+- `-f` file - return true if the provided string is a file
+- `-g` file - return true if the group id is set on a file
+- `-r` file - return true if the file is readable
+- `-s` file - return true if the file has a non-zero size
+- `-u` file - return true if the user id is set on a file
+- `-w` file - return true if the file is writable
+- `-x` file - return true if the file is an executable
+
+```bash
+#! /usr/bin/bash
+FILE="myfile.txt"
+if [ -f "$FILE" ]
+then
+    echo "$FILE is a file"
+else
+    echo "$FILE is not a file"
+fi
+```
