@@ -162,3 +162,30 @@ while read -r CURRENT_LINE
         ((LINE++))
 done < "./story.txt"
 ```
+
+## Arithmetic
+
+## Use bash script to automate git operations
+
+```bash
+#! /usr/bin/bash
+read -p "Your commit message: " MESSAGE
+cd "D:\\full stack developer\\project\\learning\bash"
+git add .
+git commit -m "$MESSAGE"
+git push -u origin main
+echo "git push completed"
+```
+
+The warning below may show up in your terminal when run bash script to operate git command.
+
+```
+warning: LF will be replaced by CRLF in function.sh.
+The file will have its original line endings in your working directory
+```
+
+Use git config command to disable the warning
+
+```
+git config --global core.safecrlf false
+```
