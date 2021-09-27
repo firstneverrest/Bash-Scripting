@@ -2,6 +2,8 @@
 
 Bash is a Unix Shell and command language written by Brian Fox for the GNU Project. Bash was created to replace Bourne shell. First release in 1989, it has been used as the default shell for most Linux distributions. You can install WSL to use bash in Windows.
 
+Every Linux command line that you use in CLI like `ls, pwd, touch, mv, mkdir, etc.` can be used in bash script. Bash script include multiple command in one file which help reducing repeated tasks such as rename 100 files.
+
 ## Check what shell you are using
 
 ```
@@ -112,4 +114,51 @@ then
 else
     echo "$FILE is not a file"
 fi
+```
+
+## Case statement
+
+```bash
+#! /usr/bin/bash
+read -p "Are you Frontend Developer? Y/N: " ANSWER
+case "$ANSWER" in
+    [y/Y] | [yY][eE][sS])
+        echo "Get 3 golds and 2 supplies"
+        ;;
+    [nN] | [nN][oO])
+        echo "Get 1 gold and 4 supplies"
+        ;;
+    *)
+        echo "Please enter y/yes or n/no"
+        ;;
+esac
+```
+
+## Loop
+
+```bash
+#! /usr/bin/bash
+# FOR LOOP
+FRUITS="Banana Orange Apple Mango"
+for FRUIT in $FRUITS
+    do
+        echo "$FRUIT"
+done
+
+# LOOP TO RENAME FILES
+FILES=$(ls *.html)
+NEW="new"
+for FILE in $FILES
+    do
+        echo "Renaming $FILE to new-$FILE"
+        mv $FILE $NEW-$FILE
+done
+
+# WHILE LOOP - READ THROUGH A FILE LINE BY LINE
+LINE=1
+while read -r CURRENT_LINE
+    do
+        echo "$LINE: $CURRENT_LINE"
+        ((LINE++))
+done < "./story.txt"
 ```
