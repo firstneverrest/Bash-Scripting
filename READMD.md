@@ -39,5 +39,54 @@ Use `man bash` to open bash manual in CLI. Also, you can visit the manual at [Ba
 ## Bash syntax
 
 ```bash
+#! /usr/bin/bash
 
+# PRINT OUT TO CONSOLE
+echo Hello Bash!
+
+# VARIABLE - UPPERCASE IS MORE POPULAR
+NAME="Lily" # no space
+echo "My name is $NAME"
+echo "My name is ${NAME}"
+
+# USER INPUT
+read -p "Enter your name: " NAME
+echo "Hello $NAME"
+
+# IF STATEMENT
+if [ "$FRUIT" == "banana" ]
+then
+    echo "Your fruit is banana"
+fi
+
+# IF-ELSE & ELIF STATEMENT
+if [ "$FRUIT" == "banana" ]
+then
+    echo "Your fruit is banana"
+elif [ "$FRUIT" == "orange" ]
+then
+    echo "Your fruit is orange"
+else
+    echo "Your fruit is not banana"
+fi
+```
+
+## Comparison
+
+- `-eq` return true if the values are equal
+- `-ne` return true if the values are not equal
+- `-gt` return true if val1 is greater than val2
+- `-ge` return true if val1 is greater than or equal to val2
+- `-lt` return true if val1 is less than val2
+- `-le` return true if val1 is less than or equal to val2
+
+```bash
+NUM1=2
+NUM2=7
+if [ "$NUM1" -gt "$NUM2" ]
+then
+    echo "$NUM1 is greater than $NUM2"
+else
+    echo "$NUM1 is less than $NUM2"
+fi
 ```
