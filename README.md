@@ -29,6 +29,7 @@ Use `man bash` to open bash manual in CLI. Also, you can visit the manual at [Ba
 - Bash script file extension is `.sh`
 - Make scripts executable with `chmod u+x`
 - With only read permission, execute a script with `bash myscript.sh`
+- single line comment (#) and multiple line comment (: '')
 
 ## How to create bash script and run bash
 
@@ -45,6 +46,11 @@ Use `man bash` to open bash manual in CLI. Also, you can visit the manual at [Ba
 
 # PRINT OUT TO CONSOLE
 echo Hello Bash!
+
+# CREATE FILE AND ADD TEXT IN IT
+echo "Hi, There!" > file.txt
+#or
+cat > file.txt
 
 # VARIABLE - UPPERCASE IS MORE POPULAR
 NAME="Lily" # no space
@@ -90,6 +96,25 @@ then
     echo "$NUM1 is greater than $NUM2"
 else
     echo "$NUM1 is less than $NUM2"
+fi
+
+# you can change square bracket
+# to double parenthesis to use <,> operator
+if (( $NUM1 > $NUM2))
+then
+    echo "$NUM1 is greater than $NUM2"
+fi
+
+# AND (&&) and OR (||)
+if [ "$AGE" -gt 20 ] && [ "$AGE" -lt 65 ]
+then
+    echo "Age is correct"
+fi
+
+# or
+if [[ "$AGE" -gt 20 && "$AGE" -lt 65 ]]
+then
+    echo "Age is correct"
 fi
 ```
 
@@ -154,6 +179,14 @@ for FILE in $FILES
         mv $FILE $NEW-$FILE
 done
 
+# WHILE LOOP
+NUMBER=1
+while [ $NUMBER -lt 10 ]
+do
+    echo "$NUMBER"
+    NUMBER=$(( NUMBER+1 ))
+done
+
 # WHILE LOOP - READ THROUGH A FILE LINE BY LINE
 LINE=1
 while read -r CURRENT_LINE
@@ -164,6 +197,35 @@ done < "./story.txt"
 ```
 
 ## Arithmetic
+
+There are three ways to do arithmetic operation:
+
+- use `$(( n1 + n2 ))`
+- use `$(expr $n1 + $n2 )`
+- use `let result=$n1+$n2`
+
+```
+num1=4
+num2=20
+
+echo $(( num1 + num2 ))
+echo $(( num1 - num2 ))
+echo $(( num1 * num2 ))
+echo $(( num1 / num2 ))
+echo $(( num1 % num2 ))
+```
+
+## Function
+
+```bash
+#! /usr/bin/bash
+function addNumber() {
+    let RESULT=$1+$2
+    echo "$1 + $2 equals to $RESULT"
+}
+
+addNumber 1 2
+```
 
 ## Use bash script to automate git operations
 
